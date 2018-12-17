@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <h1>Weather forecast</h1>
     <router-view/>
   </div>
