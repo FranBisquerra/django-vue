@@ -23,12 +23,13 @@ class Forecast(APIView):
         weather_forecast_serializer = WeatherForecastSerializer(data=payload)
         if weather_forecast_serializer.is_valid():
             payload = {'q': request.GET['city'],
+                       'units': 'metric',
                        'APPID': '4961dccab5c36104509ed9351997ba13'}
             response = requests.get(endpoint, payload)
             geodata = response.json()
             return Response(geodata)
         else:
-            return Response(weather_forecast_serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
+            return Response(weather_forecast_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class Cities(APIView):
