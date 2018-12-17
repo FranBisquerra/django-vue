@@ -7,13 +7,12 @@
     </div>
     <div class="row mt-3">
       <div class="col-10 offset-1">
-        <div class="card">
-          <div class="card-body">
-            <div v-if="isValidCity">Victory</div>
-            <div
-              v-else
-            >Weather forecast information is not available for the given city, please select one of the available ones.</div>
-          </div>
+        <div
+          class="center"
+          v-if="!isValidCity"
+        >Weather forecast information is not available for the given city, please select one of the available ones.</div>
+        <div v-else>
+          <weather :city="city"></weather>
         </div>
       </div>
     </div>
@@ -23,6 +22,7 @@
 <script>
 import { BASE_URL } from "../backend.js";
 import TypeAhead from "vue2-typeahead";
+import Weather from "./Weather";
 
 export default {
   name: "Forecast",
@@ -38,11 +38,9 @@ export default {
       return this.cities.indexOf(this.city) !== -1;
     }
   },
-  mounted: function() {
-    this.baseUrl = BASE_URL;
-  },
   components: {
-    "type-ahead": TypeAhead
+    "type-ahead": TypeAhead,
+    weather: Weather
   },
   methods: {
     getResponse(response) {
