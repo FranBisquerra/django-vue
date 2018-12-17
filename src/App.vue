@@ -1,9 +1,6 @@
 <template>
   <div id="app">
     <h1>Weather forecast</h1>
-    <div id="nav">
-      <router-link :to="{ name: 'home' }">Vue</router-link>|
-    </div>
     <router-view/>
   </div>
 </template>
