@@ -21,7 +21,7 @@
           </div>
         </div>
         <div v-if="error">
-            <p> Unnexpected error: {{error}} please contact our support center.</p>
+          <p>Unnexpected error: {{error}} please contact our support center.</p>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@ import { BASE_URL } from "../backend.js";
 export default {
   name: "Weather",
   props: {
-    city: String
+    city: { type: String, required: true }
   },
   data() {
     return {
@@ -55,12 +55,15 @@ export default {
   },
   methods: {
     fetchForecast(city) {
-      this.$backend.$fetchForecast(city).then(rs => {
-        this.weatherForecast = rs.data;
-        this.error = undefined;
-      }).catch(rs => {
-          this.error= rs.message;
-      });
+      this.$backend
+        .$fetchForecast(city)
+        .then(rs => {
+          this.weatherForecast = rs.data;
+          this.error = undefined;
+        })
+        .catch(rs => {
+          this.error = rs.message;
+        });
     }
   }
 };
