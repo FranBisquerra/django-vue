@@ -2,11 +2,9 @@
 
 * Django
 * Django Restframework
-* Django Whitenoise, CDN Ready
+* Django Whitenoise
 * Vue Cli 3
 * Vue Router
-* Gunicorn
-* Configuration for Heroku Deployment
 
 
 ### Template Structure
@@ -42,7 +40,6 @@ Setup
 ```
 $ yarn install
 $ pipenv install --dev & pipenv shell
-$ python manage.py migrate
 ```
 
 ## Running Development Servers
@@ -78,7 +75,7 @@ $ python manage.py runserverd
 
 See `settings.dev` and `vue.config.js` for notes on static assets strategy.
 
-This template implements the approach suggested by Whitenoise Django.
+Implements the approach suggested by Whitenoise Django.
 For more details see [WhiteNoise Documentation](http://whitenoise.evans.io/en/stable/django.html)
 
 It uses Django Whitenoise to serve all static files and Vue bundled files at `/static/`.
